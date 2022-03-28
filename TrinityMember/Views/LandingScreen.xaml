@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<controls:ExtendedTabbedPage
+    x:Class="TrinityMember.Views.LandingScreen"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:android="clr-namespace:Xamarin.Forms.PlatformConfiguration.AndroidSpecific;assembly=Xamarin.Forms.Core"
+    xmlns:controls="clr-namespace:TrinityMember.Controls"
+    xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+    xmlns:views="clr-namespace:TrinityMember.Views"
+    android:TabbedPage.IsSmoothScrollEnabled="False"
+    android:TabbedPage.ToolbarPlacement="Bottom"
+    ios:TabbedPage.TranslucencyMode="Opaque"
+    BackgroundColor="{x:DynamicResource BackgroundColor}"
+    BarBackgroundColor="{x:DynamicResource BackgroundColor}"
+    NavigationPage.HasNavigationBar="False"
+    SelectedTabColor="{x:DynamicResource IconColor}"
+    UnselectedTabColor="#474E73">
+    <views:Home
+        Title="Home"
+        BackgroundColor="White"
+        Icon="home.png" />
+    <views:Family Title="Family" Icon="family.png" />
+    <views:Activity Title="Activity" Icon="activity.png" />
+    <views:Contribution Title="Contribution" Icon="contribution.png" />
+</controls:ExtendedTabbedPage>

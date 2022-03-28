@@ -1,0 +1,644 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+    x:Class="TrinityMember.Views.Home"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:fontawesome="clr-namespace:FontAwesome"
+    xmlns:local="clr-namespace:TrinityMember.Controls"
+    NavigationPage.HasNavigationBar="False">
+
+    <ContentPage.Content>
+        <Grid
+            BackgroundColor="{x:DynamicResource BackgroundColor}"
+            RowDefinitions="Auto,*"
+            RowSpacing="10">
+            <Grid
+                Grid.Row="0"
+                Margin="10,5"
+                RowDefinitions="Auto,Auto">
+                <Grid.Margin>
+                    <OnPlatform x:TypeArguments="Thickness">
+                        <On Platform="iOS" Value="10,40,10,5" />
+                        <On Platform="Android" Value="10,5" />
+                    </OnPlatform>
+                </Grid.Margin>
+                <Grid Grid.Row="0" ColumnDefinitions="Auto,*,Auto">
+                    <Image
+                        Grid.Column="0"
+                        BackgroundColor="{x:DynamicResource BackgroundColor}"
+                        HeightRequest="30"
+                        HorizontalOptions="CenterAndExpand"
+                        Source="hamburgermenu.png"
+                        VerticalOptions="CenterAndExpand" />
+                    <Grid
+                        Grid.Column="0"
+                        BackgroundColor="Transparent"
+                        HorizontalOptions="FillAndExpand"
+                        VerticalOptions="FillAndExpand"
+                        WidthRequest="30">
+                        <Grid.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="Menu_Tapped" />
+                        </Grid.GestureRecognizers>
+                    </Grid>
+                    <Image
+                        Grid.ColumnSpan="3"
+                        HeightRequest="50"
+                        HorizontalOptions="CenterAndExpand"
+                        Source="applogo.png"
+                        VerticalOptions="Center" />
+
+                    <Grid
+                        Grid.Column="2"
+                        ColumnDefinitions="Auto,Auto"
+                        ColumnSpacing="0"
+                        HorizontalOptions="EndAndExpand"
+                        VerticalOptions="CenterAndExpand">
+                        <Image
+                            Grid.Column="1"
+                            Margin="-10,0,0,0"
+                            HeightRequest="30"
+                            HorizontalOptions="Center"
+                            Source="https://i.pravatar.cc/150?img=54"
+                            VerticalOptions="Center"
+                            WidthRequest="30">
+                            <Image.Clip>
+                                <EllipseGeometry
+                                    Center="15,15"
+                                    RadiusX="15"
+                                    RadiusY="15" />
+                            </Image.Clip>
+                        </Image>
+                        <BoxView
+                            Grid.Column="0"
+                            CornerRadius="17"
+                            HeightRequest="34"
+                            HorizontalOptions="CenterAndExpand"
+                            VerticalOptions="CenterAndExpand"
+                            WidthRequest="34"
+                            Color="{x:DynamicResource BackgroundColor}" />
+                        <Image
+                            Grid.Column="0"
+                            HeightRequest="30"
+                            HorizontalOptions="Center"
+                            Source="https://i.pravatar.cc/150?img=35"
+                            VerticalOptions="Center"
+                            WidthRequest="30">
+                            <Image.Clip>
+                                <EllipseGeometry
+                                    Center="15,15"
+                                    RadiusX="15"
+                                    RadiusY="15" />
+                            </Image.Clip>
+                        </Image>
+                    </Grid>
+                </Grid>
+                <Label
+                    Grid.Row="1"
+                    FontFamily="PD-B"
+                    FontSize="Small"
+                    HorizontalOptions="Center"
+                    Text="Trinity Mar Thoma Church, Houston"
+                    TextColor="{x:DynamicResource TextColor}"
+                    VerticalOptions="Center" />
+            </Grid>
+
+            <Frame
+                Grid.Row="1"
+                Padding="0"
+                BackgroundColor="{x:DynamicResource BackgroundColor}"
+                BorderColor="{x:DynamicResource BorderColor}"
+                CornerRadius="30"
+                HasShadow="False"
+                HorizontalOptions="FillAndExpand"
+                IsClippedToBounds="True"
+                VerticalOptions="FillAndExpand">
+                <ScrollView VerticalScrollBarVisibility="Never">
+                    <Grid
+                        x:Name="DataGrid"
+                        BindingContext="{Binding}"
+                        RowDefinitions="Auto,Auto,Auto,Auto,Auto"
+                        RowSpacing="10">
+                        <Grid
+                            Grid.Row="0"
+                            Margin="10"
+                            RowDefinitions="Auto,Auto,Auto">
+                            <Frame
+                                Grid.Row="0"
+                                Padding="0"
+                                CornerRadius="40"
+                                HasShadow="False"
+                                HeightRequest="80"
+                                HorizontalOptions="CenterAndExpand"
+                                IsClippedToBounds="True"
+                                VerticalOptions="CenterAndExpand"
+                                WidthRequest="80">
+                                <Image
+                                    Aspect="AspectFill"
+                                    HorizontalOptions="FillAndExpand"
+                                    Source="{Binding image}"
+                                    VerticalOptions="FillAndExpand" />
+                            </Frame>
+                            <Label
+                                Grid.Row="1"
+                                FontFamily="PD-B"
+                                FontSize="Medium"
+                                HorizontalOptions="Center"
+                                Text="{Binding name}"
+                                TextColor="#353D65"
+                                VerticalOptions="Center" />
+                            <Label
+                                Grid.Row="2"
+                                FontFamily="AV-M"
+                                FontSize="Caption"
+                                HorizontalOptions="CenterAndExpand"
+                                HorizontalTextAlignment="Center"
+                                TextColor="{x:DynamicResource PlaceholderColor}"
+                                VerticalOptions="Center">
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="{Binding place}" />
+                                        <Span Text="   ◆ " />
+                                        <Span Text="{Binding houseno}" />
+                                        <Span Text="   ◆ " />
+                                        <Span Text="{Binding gender}" />
+                                    </FormattedString>
+                                </Label.FormattedText>
+                            </Label>
+                        </Grid>
+                        <Grid
+                            Grid.Row="1"
+                            ColumnDefinitions="Auto,Auto,Auto,Auto,Auto"
+                            ColumnSpacing="10"
+                            HorizontalOptions="CenterAndExpand"
+                            VerticalOptions="CenterAndExpand">
+                            <Button
+                                Grid.Column="0"
+                                Padding="0"
+                                BackgroundColor="{x:DynamicResource ButtonColor}"
+                                CornerRadius="5"
+                                FontFamily="FA-BR"
+                                FontSize="Small"
+                                HeightRequest="24"
+                                HorizontalOptions="CenterAndExpand"
+                                Text="{x:Static fontawesome:FontAwesomeIcons.Twitter}"
+                                TextColor="{x:DynamicResource BackgroundColor}"
+                                VerticalOptions="Center"
+                                WidthRequest="25" />
+                            <Button
+                                Grid.Column="1"
+                                Padding="0"
+                                BackgroundColor="{x:DynamicResource ButtonColor}"
+                                CornerRadius="5"
+                                FontFamily="FA-BR"
+                                FontSize="Small"
+                                HeightRequest="25"
+                                HorizontalOptions="CenterAndExpand"
+                                Text="{x:Static fontawesome:FontAwesomeIcons.LinkedinIn}"
+                                TextColor="{x:DynamicResource BackgroundColor}"
+                                VerticalOptions="Center"
+                                WidthRequest="25" />
+                            <Button
+                                Grid.Column="2"
+                                Padding="0"
+                                BackgroundColor="{x:DynamicResource ButtonColor}"
+                                CornerRadius="5"
+                                FontFamily="FA-BR"
+                                FontSize="Small"
+                                HeightRequest="25"
+                                HorizontalOptions="CenterAndExpand"
+                                Text="{x:Static fontawesome:FontAwesomeIcons.FacebookF}"
+                                TextColor="{x:DynamicResource BackgroundColor}"
+                                VerticalOptions="Center"
+                                WidthRequest="25" />
+                            <Button
+                                Grid.Column="3"
+                                Padding="0"
+                                BackgroundColor="{x:DynamicResource ButtonColor}"
+                                CornerRadius="5"
+                                FontFamily="FA-BR"
+                                FontSize="Small"
+                                HeightRequest="24"
+                                HorizontalOptions="CenterAndExpand"
+                                Text="{x:Static fontawesome:FontAwesomeIcons.Whatsapp}"
+                                TextColor="{x:DynamicResource BackgroundColor}"
+                                VerticalOptions="Center"
+                                WidthRequest="24" />
+                            <Button
+                                Grid.Column="4"
+                                Padding="0"
+                                BackgroundColor="{x:DynamicResource ButtonColor}"
+                                CornerRadius="5"
+                                FontFamily="FA-BR"
+                                FontSize="Small"
+                                HeightRequest="24"
+                                HorizontalOptions="CenterAndExpand"
+                                Text="{x:Static fontawesome:FontAwesomeIcons.GooglePlusG}"
+                                TextColor="{x:DynamicResource BackgroundColor}"
+                                VerticalOptions="Center"
+                                WidthRequest="24" />
+                        </Grid>
+                        <Frame
+                            Grid.Row="2"
+                            Margin="15,10"
+                            Padding="0"
+                            BackgroundColor="Transparent"
+                            BorderColor="{x:DynamicResource BorderColor}"
+                            CornerRadius="10"
+                            HasShadow="False"
+                            HorizontalOptions="FillAndExpand"
+                            VerticalOptions="CenterAndExpand">
+                            <Grid Margin="10" ColumnDefinitions="*,Auto,*">
+                                <Grid
+                                    Grid.Column="0"
+                                    ColumnDefinitions="Auto,*"
+                                    ColumnSpacing="7">
+                                    <Frame
+                                        Grid.Column="0"
+                                        Padding="0"
+                                        BackgroundColor="{x:DynamicResource ButtonColor}"
+                                        CornerRadius="10"
+                                        HasShadow="False"
+                                        HeightRequest="20"
+                                        HorizontalOptions="Center"
+                                        VerticalOptions="Center"
+                                        WidthRequest="20">
+                                        <Label
+                                            FontFamily="FA-B"
+                                            FontSize="Caption"
+                                            HorizontalOptions="CenterAndExpand"
+                                            Text="{x:Static fontawesome:FontAwesomeIcons.MapMarkerAlt}"
+                                            TextColor="{x:DynamicResource ThemeColor}"
+                                            VerticalOptions="CenterAndExpand" />
+                                    </Frame>
+
+                                    <Grid
+                                        Grid.Column="1"
+                                        RowDefinitions="Auto,Auto"
+                                        RowSpacing="2"
+                                        VerticalOptions="Center">
+                                        <Label
+                                            Grid.Row="0"
+                                            FontFamily="PD-M"
+                                            FontSize="Micro"
+                                            HorizontalOptions="StartAndExpand"
+                                            Text="Address"
+                                            TextColor="{x:DynamicResource PlaceholderColor}"
+                                            VerticalOptions="Center" />
+                                        <Label
+                                            Grid.Row="1"
+                                            FontFamily="AV-M"
+                                            FontSize="Caption"
+                                            HorizontalOptions="StartAndExpand"
+                                            Text="{Binding address}"
+                                            TextColor="{x:DynamicResource TextColor}"
+                                            VerticalOptions="Center" />
+                                    </Grid>
+                                </Grid>
+                                <BoxView
+                                    Grid.Column="1"
+                                    Margin="0,-15"
+                                    HorizontalOptions="CenterAndExpand"
+                                    VerticalOptions="FillAndExpand"
+                                    WidthRequest="1"
+                                    Color="{x:DynamicResource BorderColor}">
+                                    <BoxView.Margin>
+                                        <OnPlatform x:TypeArguments="Thickness">
+                                            <On Platform="iOS" Value="0,-10" />
+                                            <On Platform="Android" Value="0,-15" />
+                                        </OnPlatform>
+                                    </BoxView.Margin>
+                                </BoxView>
+                                <Grid
+                                    Grid.Column="2"
+                                    Margin="5,0,0,0"
+                                    ColumnDefinitions="Auto,*"
+                                    ColumnSpacing="7">
+                                    <Frame
+                                        Grid.Column="0"
+                                        Padding="0"
+                                        BackgroundColor="{x:DynamicResource ButtonColor}"
+                                        CornerRadius="10"
+                                        HasShadow="False"
+                                        HeightRequest="20"
+                                        HorizontalOptions="Center"
+                                        VerticalOptions="Center"
+                                        WidthRequest="20">
+                                        <Label
+                                            FontFamily="FA-B"
+                                            FontSize="Micro"
+                                            HorizontalOptions="CenterAndExpand"
+                                            Text="{x:Static fontawesome:FontAwesomeIcons.PhoneAlt}"
+                                            TextColor="{x:DynamicResource ThemeColor}"
+                                            VerticalOptions="CenterAndExpand" />
+                                    </Frame>
+
+                                    <Grid
+                                        Grid.Column="1"
+                                        RowDefinitions="Auto,Auto"
+                                        RowSpacing="2"
+                                        VerticalOptions="Center">
+                                        <Label
+                                            Grid.Row="0"
+                                            FontFamily="PD-M"
+                                            FontSize="Micro"
+                                            HorizontalOptions="StartAndExpand"
+                                            Text="Phone Number"
+                                            TextColor="{x:DynamicResource PlaceholderColor}"
+                                            VerticalOptions="Center" />
+                                        <Label
+                                            Grid.Row="1"
+                                            FontFamily="AV-M"
+                                            FontSize="Caption"
+                                            HorizontalOptions="StartAndExpand"
+                                            Text="{Binding phoneno}"
+                                            TextColor="{x:DynamicResource TextColor}"
+                                            VerticalOptions="Center" />
+                                    </Grid>
+                                </Grid>
+                            </Grid>
+                        </Frame>
+                        <Grid
+                            Grid.Row="3"
+                            HorizontalOptions="FillAndExpand"
+                            RowDefinitions="Auto,Auto"
+                            VerticalOptions="StartAndExpand">
+                            <BoxView
+                                Grid.RowSpan="2"
+                                CornerRadius="0,0,30,0"
+                                HorizontalOptions="FillAndExpand"
+                                VerticalOptions="FillAndExpand"
+                                Color="AliceBlue" />
+                            <Grid
+                                Grid.Row="0"
+                                Margin="15,10,15,0"
+                                RowDefinitions="Auto,Auto">
+                                <Label
+                                    Grid.Row="0"
+                                    FontFamily="PD-B"
+                                    FontSize="Small"
+                                    HorizontalOptions="StartAndExpand"
+                                    Text="My Households"
+                                    TextColor="{x:DynamicResource TextColor}"
+                                    VerticalOptions="Center" />
+                                <BoxView
+                                    Grid.Row="1"
+                                    CornerRadius="2"
+                                    HeightRequest="3"
+                                    HorizontalOptions="StartAndExpand"
+                                    VerticalOptions="CenterAndExpand"
+                                    WidthRequest="25"
+                                    Color="{x:DynamicResource IconColor}" />
+                            </Grid>
+
+                            <CollectionView
+                                x:Name="HoseholdsCollectionView"
+                                Grid.Row="1"
+                                Margin="10,0,10,10"
+                                BackgroundColor="{x:DynamicResource TransparentColor}"
+                                HeightRequest="110"
+                                HorizontalOptions="CenterAndExpand"
+                                ItemsLayout="HorizontalList"
+                                ItemsSource="{Binding}"
+                                VerticalOptions="Start">
+                                <CollectionView.ItemTemplate>
+                                    <DataTemplate>
+                                        <ContentView>
+                                            <Frame
+                                                Margin="15,0"
+                                                Padding="0"
+                                                BackgroundColor="{x:DynamicResource TransparentColor}"
+                                                HasShadow="False"
+                                                HorizontalOptions="StartAndExpand"
+                                                VerticalOptions="CenterAndExpand">
+                                                <Grid
+                                                    HorizontalOptions="CenterAndExpand"
+                                                    RowDefinitions="Auto,Auto,Auto"
+                                                    RowSpacing="2"
+                                                    VerticalOptions="StartAndExpand">
+                                                    <Frame
+                                                        Grid.Row="0"
+                                                        Margin="0,5"
+                                                        Padding="0"
+                                                        BackgroundColor="White"
+                                                        BorderColor="White"
+                                                        CornerRadius="30"
+                                                        HasShadow="False"
+                                                        HeightRequest="60"
+                                                        HorizontalOptions="CenterAndExpand"
+                                                        IsClippedToBounds="True"
+                                                        VerticalOptions="CenterAndExpand"
+                                                        WidthRequest="60">
+                                                        <Image Aspect="AspectFill" Source="{Binding image}" />
+                                                    </Frame>
+                                                    <Label
+                                                        Grid.Row="1"
+                                                        FontFamily="PD-B"
+                                                        FontSize="Caption"
+                                                        HorizontalOptions="CenterAndExpand"
+                                                        HorizontalTextAlignment="Center"
+                                                        Text="{Binding name}"
+                                                        TextColor="{x:DynamicResource TextColor}"
+                                                        VerticalOptions="Center" />
+                                                    <Label
+                                                        Grid.Row="2"
+                                                        FontFamily="AV-M"
+                                                        FontSize="Micro"
+                                                        HorizontalOptions="CenterAndExpand"
+                                                        HorizontalTextAlignment="Center"
+                                                        Text="{Binding relation}"
+                                                        TextColor="{x:DynamicResource PlaceholderColor}"
+                                                        VerticalOptions="Center" />
+                                                </Grid>
+                                            </Frame>
+
+
+                                        </ContentView>
+                                    </DataTemplate>
+                                </CollectionView.ItemTemplate>
+                            </CollectionView>
+
+                        </Grid>
+                        <Grid
+                            Grid.Row="4"
+                            Margin="5,10"
+                            RowDefinitions="Auto,Auto">
+                            <local:SegmentedBarControl
+                                x:Name="segment"
+                                Grid.Row="0"
+                                AutoScroll="true"
+                                SelectedItemChanged="segment_SelectedItemChanged"
+                                SelectedLineColor="{x:DynamicResource IconColor}"
+                                SelectedTextColor="{x:DynamicResource TextColor}"
+                                TextColor="{x:DynamicResource PlaceholderColor}" />
+                            <CollectionView
+                                x:Name="BirthdayCollectionView"
+                                Grid.Row="1"
+                                Margin="10"
+                                BackgroundColor="{x:DynamicResource TransparentColor}"
+                                HeightRequest="70"
+                                HorizontalOptions="CenterAndExpand"
+                                ItemsLayout="HorizontalList"
+                                ItemsSource="{Binding}"
+                                VerticalOptions="Start">
+                                <CollectionView.ItemTemplate>
+                                    <DataTemplate>
+                                        <ContentView>
+                                            <Frame
+                                                Margin="10,0"
+                                                Padding="0"
+                                                BackgroundColor="{x:DynamicResource TransparentColor}"
+                                                HasShadow="False"
+                                                HorizontalOptions="StartAndExpand"
+                                                VerticalOptions="CenterAndExpand">
+                                                <Grid
+                                                    ColumnDefinitions="Auto,Auto"
+                                                    HorizontalOptions="CenterAndExpand"
+                                                    VerticalOptions="StartAndExpand">
+                                                    <Grid Grid.Column="0">
+                                                        <Frame
+                                                            Padding="0"
+                                                            BackgroundColor="White"
+                                                            BorderColor="White"
+                                                            CornerRadius="25"
+                                                            HasShadow="False"
+                                                            HeightRequest="50"
+                                                            HorizontalOptions="CenterAndExpand"
+                                                            IsClippedToBounds="True"
+                                                            VerticalOptions="CenterAndExpand"
+                                                            WidthRequest="50">
+                                                            <Image Aspect="AspectFill" Source="{Binding image}" />
+                                                        </Frame>
+                                                        <Frame
+                                                            Margin="0,-5,0,0"
+                                                            Padding="0"
+                                                            BackgroundColor="{x:DynamicResource ButtonColor}"
+                                                            BorderColor="White"
+                                                            CornerRadius="11"
+                                                            HasShadow="False"
+                                                            HeightRequest="22"
+                                                            HorizontalOptions="EndAndExpand"
+                                                            VerticalOptions="StartAndExpand"
+                                                            WidthRequest="22">
+                                                            <Label
+                                                                FontFamily="FA-B"
+                                                                FontSize="Micro"
+                                                                HorizontalOptions="CenterAndExpand"
+                                                                Text="{x:Static fontawesome:FontAwesomeIcons.BirthdayCake}"
+                                                                TextColor="{x:DynamicResource ThemeColor}"
+                                                                VerticalOptions="CenterAndExpand" />
+                                                        </Frame>
+                                                    </Grid>
+
+                                                    <Grid
+                                                        Grid.Column="1"
+                                                        RowDefinitions="Auto,Auto"
+                                                        RowSpacing="2"
+                                                        VerticalOptions="CenterAndExpand">
+                                                        <Label
+                                                            Grid.Row="0"
+                                                            FontFamily="PD-B"
+                                                            FontSize="Caption"
+                                                            HorizontalOptions="StartAndExpand"
+                                                            HorizontalTextAlignment="Start"
+                                                            Text="{Binding name}"
+                                                            TextColor="{x:DynamicResource TextColor}"
+                                                            VerticalOptions="Center" />
+                                                        <Label
+                                                            Grid.Row="1"
+                                                            FontFamily="AV-M"
+                                                            FontSize="Micro"
+                                                            HorizontalOptions="StartAndExpand"
+                                                            HorizontalTextAlignment="Start"
+                                                            Text="{Binding birthday}"
+                                                            TextColor="{x:DynamicResource PlaceholderColor}"
+                                                            VerticalOptions="Center" />
+                                                    </Grid>
+
+                                                </Grid>
+                                            </Frame>
+
+
+                                        </ContentView>
+                                    </DataTemplate>
+                                </CollectionView.ItemTemplate>
+                            </CollectionView>
+                            <Grid
+                                x:Name="weddinganiversarygrid"
+                                Grid.Row="1"
+                                Margin="20,10"
+                                BindingContext="{Binding}"
+                                ColumnDefinitions="Auto,Auto"
+                                HeightRequest="70"
+                                IsVisible="False"
+                                Opacity="0"
+                                TranslationX="-100">
+                                <Grid Grid.Column="0">
+                                    <Frame
+                                        Padding="0"
+                                        BackgroundColor="White"
+                                        BorderColor="White"
+                                        CornerRadius="25"
+                                        HasShadow="False"
+                                        HeightRequest="50"
+                                        HorizontalOptions="CenterAndExpand"
+                                        IsClippedToBounds="True"
+                                        VerticalOptions="CenterAndExpand"
+                                        WidthRequest="50">
+                                        <Image Aspect="AspectFill" Source="{Binding image}" />
+                                    </Frame>
+                                    <Frame
+                                        Margin="0,5,0,0"
+                                        Padding="0"
+                                        BackgroundColor="{x:DynamicResource ButtonColor}"
+                                        BorderColor="White"
+                                        CornerRadius="10"
+                                        HasShadow="False"
+                                        HeightRequest="20"
+                                        HorizontalOptions="EndAndExpand"
+                                        VerticalOptions="StartAndExpand"
+                                        WidthRequest="20">
+                                        <Label
+                                            FontFamily="FA-B"
+                                            FontSize="Micro"
+                                            HorizontalOptions="CenterAndExpand"
+                                            Text="{x:Static fontawesome:FontAwesomeIcons.Calendar}"
+                                            TextColor="{x:DynamicResource ThemeColor}"
+                                            VerticalOptions="CenterAndExpand" />
+                                    </Frame>
+                                </Grid>
+
+                                <Grid
+                                    Grid.Column="1"
+                                    RowDefinitions="Auto,Auto"
+                                    RowSpacing="2"
+                                    VerticalOptions="CenterAndExpand">
+                                    <Label
+                                        Grid.Row="0"
+                                        FontFamily="PD-B"
+                                        FontSize="Caption"
+                                        HorizontalOptions="StartAndExpand"
+                                        HorizontalTextAlignment="Start"
+                                        Text="{Binding name}"
+                                        TextColor="{x:DynamicResource TextColor}"
+                                        VerticalOptions="Center" />
+                                    <Label
+                                        Grid.Row="1"
+                                        FontFamily="AV-M"
+                                        FontSize="Micro"
+                                        HorizontalOptions="StartAndExpand"
+                                        HorizontalTextAlignment="Start"
+                                        Text="{Binding anniversary}"
+                                        TextColor="{x:DynamicResource PlaceholderColor}"
+                                        VerticalOptions="Center" />
+                                </Grid>
+
+                            </Grid>
+
+                        </Grid>
+                    </Grid>
+
+                </ScrollView>
+            </Frame>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

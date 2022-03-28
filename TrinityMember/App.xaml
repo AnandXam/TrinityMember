@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Application
+    x:Class="TrinityMember.App"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
+    <Application.Resources>
+        <ResourceDictionary>
+            <Color x:Key="TransparentColor">Transparent</Color>
+            <Color x:Key="ThemeColor">#FFFFFF</Color>
+            <Color x:Key="BackgroundColor">#FFFFFF</Color>
+            <Color x:Key="SecondaryColor">#ECF2F8</Color>
+            <Color x:Key="TextColor">#3A4750</Color>
+            <Color x:Key="PlaceholderColor">#767C9C</Color>
+            <Color x:Key="IconColor">#EC1C24</Color>
+            <Color x:Key="BorderColor">LightGray</Color>
+            <Color x:Key="ButtonColor">#6ED3DF</Color>
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>

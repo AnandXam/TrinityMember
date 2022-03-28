@@ -1,0 +1,73 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <ProduceReferenceAssembly>true</ProduceReferenceAssembly>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DebugType>portable</DebugType>
+    <DebugSymbols>true</DebugSymbols>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Xamarin.Forms" Version="5.0.0.2012" />
+    <PackageReference Include="Xamarin.Essentials" Version="1.6.1" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="Views\" />
+    <None Remove="Model\" />
+    <None Remove="Util\" />
+    <None Remove="Util\Fonts\" />
+    <None Remove="Util\Fonts\fa-regular.otf" />
+    <None Remove="Util\Fonts\fa-regular-brands.otf" />
+    <None Remove="Util\Fonts\fa-solid.otf" />
+    <None Remove="Controls\" />
+    <None Remove="Util\Fonts\PlayfairDisplay-Bold.ttf" />
+    <None Remove="Util\Fonts\PlayfairDisplay-Medium.ttf" />
+    <None Remove="Util\Fonts\PlayfairDisplay-Regular.ttf" />
+    <None Remove="Util\Fonts\Archivo-Medium.ttf" />
+    <None Remove="Controls\Segmented\" />
+    <None Remove="Controls\Tabed Page\" />
+    <None Remove="Effects\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Views\" />
+    <Folder Include="Model\" />
+    <Folder Include="Util\" />
+    <Folder Include="Util\Fonts\" />
+    <Folder Include="Controls\" />
+    <Folder Include="Controls\Segmented\" />
+    <Folder Include="Controls\Tabed Page\" />
+    <Folder Include="Effects\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Update="Views\LandingScreen.xaml.cs">
+      <DependentUpon>LandingScreen.xaml</DependentUpon>
+    </Compile>
+    <Compile Condition=" '$(EnableDefaultCompileItems)' == 'true' " Update="App.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Views\Home.xaml.cs">
+      <DependentUpon>Home.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\Family.xaml.cs">
+      <DependentUpon>Family.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\Activity.xaml.cs">
+      <DependentUpon>Activity.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\Contribution.xaml.cs">
+      <DependentUpon>Contribution.xaml</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Util\Fonts\fa-regular.otf" />
+    <EmbeddedResource Include="Util\Fonts\fa-regular-brands.otf" />
+    <EmbeddedResource Include="Util\Fonts\fa-solid.otf" />
+    <EmbeddedResource Include="Util\Fonts\PlayfairDisplay-Bold.ttf" />
+    <EmbeddedResource Include="Util\Fonts\PlayfairDisplay-Medium.ttf" />
+    <EmbeddedResource Include="Util\Fonts\PlayfairDisplay-Regular.ttf" />
+    <EmbeddedResource Include="Util\Fonts\Archivo-Medium.ttf" />
+  </ItemGroup>
+</Project>

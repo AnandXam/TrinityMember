@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+    x:Class="TrinityMember.Views.Contribution"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
+    <ContentPage.Content>
+        <Grid
+            BackgroundColor="{x:DynamicResource ThemeColor}"
+            HorizontalOptions="FillAndExpand"
+            VerticalOptions="FillAndExpand">
+            <Label
+                FontFamily="AV-M"
+                HorizontalOptions="CenterAndExpand"
+                Text="Page under construction!"
+                TextColor="{x:DynamicResource PlaceholderColor}"
+                VerticalOptions="CenterAndExpand" />
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>
